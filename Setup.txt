@@ -1,0 +1,28 @@
+Creating a virtual environment in Visual Studio Code (VS Code) on Windows involves a few straightforward steps. You'll use the terminal within VS Code for this process. 
+
+Here's a brief guide:
+
+1. Open VS Code and then open your project folder where you want the virtual environment to be created.
+
+2. Open the Terminal in VS Code. You can do this by going to `Terminal > New Terminal` from the menu or using the shortcut `Ctrl+``.
+
+3. Create the Virtual Environment: Run the following command in the terminal. Replace `env_name` with your desired name for the virtual environment.
+
+    python -m venv env_name
+
+    This command creates a new virtual environment called `env_name` in your project directory.
+
+4. Activate the Virtual Environment: After creating the virtual environment, you need to activate it. To do so, run the activation script from the terminal. For Windows, the command is:
+
+
+    .\env_name\Scripts\activate
+ 
+    Your terminal prompt will change to show the name of the activated environment. 
+
+5. Install Dependencies : pip install requests
+
+6. Deactivating the Virtual Environment: deactivate
+
+7. Select the Python Interpreter by using 'Ctrl+Shift+P' Select Python Interpreter and choose the venv environment you created for the project. 
+
+

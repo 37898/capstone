@@ -1,0 +1,4 @@
+#As the virtual environment of python and all the dependencies for the project readily availbale in the internet
+#we decided not to push the venv anymore
+#The size of the venv is expanding with around 15k files which lead to this decision as a team.
+.venv
