@@ -2,6 +2,7 @@ import cv2
 import face_recognition
 
 # Initialize the webcam
+# You can use 1 as an argument if you are using an external device.
 video_capture = cv2.VideoCapture(0)
 
 while True:
