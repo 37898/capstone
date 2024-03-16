@@ -50,7 +50,7 @@ def create_dataset_for_class(class_name, num_images=30, train_ratio=0.8):
     print(f"Dataset collection for class {class_name} complete!")
 
 # Example usage
-class_names = ['Abhi'] # Add more class names as needed
+class_names = ['Jan','Abhi','Bala'] # Add more class names as needed
 num_images_per_class = 150 # Adjust as per your requirement
 
 for class_name in class_names:
