@@ -52,8 +52,7 @@ while True:
         if pred[0][0] > 0.6:
             name = 'Abhi'
         if pred[0][1] > 0.6:
-            name = 'Jan'
-            
+            name = 'Jan'   
         if pred[0][2] > 0.6:
             name = 'Bala'  
         cv2.putText(frame, name, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
