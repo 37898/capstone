@@ -11,6 +11,7 @@ model = load_model(model_path)
 
 # Ensure the cascade path is correct and use a raw string if necessary
 cascade_path = r"C:\Users\abhij\Masters\Spring 2024\Capstone_Project\haarcascade_frontalface_default.xml"
+#cascade_path = r"C:\Users\abhij\Masters\Spring 2024\Capstone_Project\haarcascade_profileface.xml"
 face_cascade = cv2.CascadeClassifier(cascade_path)
 
 def face_extractor(img):

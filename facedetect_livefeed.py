@@ -9,7 +9,14 @@ def get_device():
 
 def initialize_mtcnn(device):
     """Initialize MTCNN with predefined settings."""
-    return MTCNN(keep_all=True, device=device)
+    return MTCNN(image_size=160,
+              margin=0,
+              min_face_size=20,
+              thresholds=[0.6, 0.7, 0.7], # MTCNN thresholds
+              factor=0.709,
+              post_process=True,
+              device=device # If you don't have GPU
+        )
 
 def np_angle(a, b, c):
     """Calculate the angle between three points."""
@@ -29,18 +36,20 @@ def detect_and_display(mtcnn, device):
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         # Detect faces in the frame
         boxes, probs, landmarks = mtcnn.detect(frame_rgb, landmarks=True)
-
         if boxes is not None:
             for box, landmark in zip(boxes, landmarks):
                 # Draw the bounding box and landmarks on the frame
                 cv2.rectangle(frame, (int(box[0]), int(box[1])), (int(box[2]), int(box[3])), (0, 255, 0), 2)
                 for point in landmark:
-                    cv2.circle(frame, (int(point[0]), int(point[1])), 2, (0, 0, 255), -1)
+                    cv2.circle(frame, (int(point[0]), int(point[1])), 2, (0, 255, 255), -1)
+
+                
 
                 # Calculate angles to determine the pose
                 angR = np_angle(landmark[0], landmark[1], landmark[2])
                 angL = np_angle(landmark[1], landmark[0], landmark[2])
-                if 35 <= angR <= 57 and 35 <= angL <= 58:
+                #if 35 <= angR <= 57 and 35 <= angL <= 58:
+                if 35 <= angR <= 55 and 35 <= angL <= 55:
                     predLabel = 'Frontal'
                 elif angR < angL:
                     predLabel = 'Left Profile'
@@ -56,6 +65,7 @@ def detect_and_display(mtcnn, device):
         # Break the loop when 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
 
     cap.release()
     cv2.destroyAllWindows()

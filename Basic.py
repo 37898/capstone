@@ -1,1 +1,0 @@
-print("This is the repository for Class DASC 5309 Data Science Capstone Project Team 27")
