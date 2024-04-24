@@ -49,7 +49,8 @@ def detect_and_display(mtcnn, device):
                 angR = np_angle(landmark[0], landmark[1], landmark[2])
                 angL = np_angle(landmark[1], landmark[0], landmark[2])
                 #if 35 <= angR <= 57 and 35 <= angL <= 58:
-                if 35 <= angR <= 55 and 35 <= angL <= 55:
+                #if 35 <= angR <= 65 and 35 <= angL <= 65:
+                if angR <= 55 and angL <= 55:
                     predLabel = 'Frontal'
                 elif angR < angL:
                     predLabel = 'Left Profile'
