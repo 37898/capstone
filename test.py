@@ -41,7 +41,8 @@ def extract_features_labels(directory, mtcnn):
                 features.append(landmarks_flat)
                 labels.append(label_folder)
             else:
-                print(f"No confident landmarks detected for {image_name}, skipped.")
+                pass
+                #print(f"No confident landmarks detected for {image_name}, skipped.")
     
     return np.array(features, dtype=object), np.array(labels)
 
@@ -104,14 +105,15 @@ def classify_single_image(image_path, classifier, mtcnn, reverse_label_encodings
     _, probs, landmarks = mtcnn.detect(image, landmarks=True)
     if landmarks is not None and np.any(probs > 0.9):
         landmarks_flat = landmarks[0].flatten()
-        print(landmarks_flat)
+        #print(landmarks_flat)
         # Predict the class of the image
         prediction_index = classifier.predict([landmarks_flat])[0]  # Predict expects a list of samples
-        print(prediction_index)
+        #print(prediction_index)
         #predicted_label = reverse_label_encodings[prediction_index]
         print(f"The image {os.path.basename(image_path)} is classified as: {prediction_index}")
     else:
-        print(f"No confident landmarks detected for {os.path.basename(image_path)}, unable to classify.")
+        pass
+        #print(f"No confident landmarks detected for {os.path.basename(image_path)}, unable to classify.")
 
 
 
