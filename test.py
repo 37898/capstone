@@ -126,39 +126,39 @@ classify_single_image(image_path_to_classify, classifier, mtcnn, label_encodings
 
 
 
-# def live_classification(classifier, mtcnn, reverse_label_encodings):
-#     cap = cv2.VideoCapture(0)  # Start video capture
+def live_classification(classifier, mtcnn, reverse_label_encodings):
+    cap = cv2.VideoCapture(0)  # Start video capture
 
-#     while True:
-#         ret, frame = cap.read()
-#         if not ret:
-#             print("Failed to capture video")
-#             break
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            print("Failed to capture video")
+            break
         
-#         # Convert frame to PIL Image
-#         img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+        # Convert frame to PIL Image
+        img = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
         
-#         # Detect face
-#         _, probs, landmarks = mtcnn.detect(img, landmarks=True)
+        # Detect face
+        _, probs, landmarks = mtcnn.detect(img, landmarks=True)
         
-#         # If a face is detected with high confidence
-#         if landmarks is not None and np.any(probs > 0.9):
-#             landmarks_flat = landmarks[0].flatten()
-#             prediction_index = classifier.predict([landmarks_flat])[0]
-#             #predicted_label = reverse_label_encodings.get(prediction_index, "Unknown")
+        # If a face is detected with high confidence
+        if landmarks is not None and np.any(probs > 0.9):
+            landmarks_flat = landmarks[0].flatten()
+            prediction_index = classifier.predict([landmarks_flat])[0]
+            #predicted_label = reverse_label_encodings.get(prediction_index, "Unknown")
             
-#             # Display the classification result on the frame
-#             cv2.putText(frame, prediction_index, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+            # Display the classification result on the frame
+            cv2.putText(frame, prediction_index, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
         
-#         # Show the frame
-#         cv2.imshow('Live Classification', frame)
+        # Show the frame
+        cv2.imshow('Live Classification', frame)
         
-#         # Break the loop when 'q' is pressed
-#         if cv2.waitKey(1) & 0xFF == ord('q'):
-#             break
+        # Break the loop when 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
-#     cap.release()
-#     cv2.destroyAllWindows()
+    cap.release()
+    cv2.destroyAllWindows()
 
-# Start live classification
-#live_classification(classifier, mtcnn, label_encodings)
+#Start live classification
+live_classification(classifier, mtcnn, label_encodings)
